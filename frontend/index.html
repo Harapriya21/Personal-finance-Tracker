@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Finance Tracker</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-gray-100 text-black min-h-screen transition duration-300" id="body">
+
+  <div class="container mx-auto p-4">
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold">Finance Tracker</h1>
+
+      <button id="themeToggle" class="bg-black text-white px-4 py-2 rounded">
+        Dark Mode
+      </button>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+
+      <div class="summary-card bg-white p-4 rounded shadow transition">
+        <h2 class="text-lg font-semibold">Budget</h2>
+        <p id="budgetDisplay" class="text-2xl">₹0</p>
+      </div>
+
+      <div class="summary-card bg-white p-4 rounded shadow transition">
+        <h2 class="text-lg font-semibold">Expenses</h2>
+        <p id="expenseDisplay" class="text-2xl">₹0</p>
+      </div>
+
+      <div class="summary-card bg-white p-4 rounded shadow transition">
+        <h2 class="text-lg font-semibold">Remaining</h2>
+        <p id="remainingDisplay" class="text-2xl">₹0</p>
+      </div>
+
+    </div>
+
+    <!-- BUDGET -->
+    <div class="summary-card bg-white p-4 rounded shadow mb-6 transition">
+
+      <input type="number" id="budgetInput"
+        placeholder="Set Monthly Budget"
+        class="border p-2 w-full mb-2" />
+
+      <button onclick="setBudget()"
+        class="bg-blue-500 text-white px-4 py-2 rounded">
+        Save Budget
+      </button>
+    </div>
+
+    <!-- FORM -->
+    <div class="summary-card bg-white p-4 rounded shadow mb-6 transition">
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+        <input id="title" type="text" placeholder="Expense Title"
+          class="border p-2 rounded" />
+
+        <input id="amount" type="number" placeholder="Amount"
+          class="border p-2 rounded" />
+
+        <select id="category" class="border p-2 rounded">
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Shopping</option>
+          <option>Entertainment</option>
+        </select>
+
+        <input id="date" type="date"
+          class="border p-2 rounded" />
+
+      </div>
+
+      <button onclick="addExpense()"
+        class="bg-green-500 text-white px-4 py-2 rounded mt-4">
+        Add Expense
+      </button>
+    </div>
+
+    <!-- LIST -->
+    <div id="expenseBox"
+      class="summary-card bg-white p-4 rounded shadow text-black transition">
+
+      <h2 class="text-xl font-bold mb-4">Expense List</h2>
+      <div id="expenseList"></div>
+
+    </div>
+
+    <!-- CHART (MINIMIZED) -->
+    <div class="main-card bg-white p-4 rounded shadow mt-6 transition">
+
+      <div class="w-full flex justify-center">
+
+        <div style="width: 300px; height: 300px;">
+          <canvas id="expenseChart"></canvas>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
